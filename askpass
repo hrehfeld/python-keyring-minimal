@@ -1,5 +1,5 @@
 #!/usr/bin/sh
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-label=${1}
+label=${1:$(hostname)}
 $SCRIPTPATH/keyring get $label || (notify-send 'Keyring locked!' 'Please unlock the keyring and try again' --icon=dialog-password -u critical && exit 1)
