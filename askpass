@@ -2,4 +2,4 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 label=${1:$(hostname)}
-$SCRIPTPATH/keyring get $label || (notify-send 'Keyring locked!' 'Please unlock the keyring and try again' --icon=dialog-password -u critical && exit 1)
+$SCRIPTPATH/keyring get $label || (notify-send "Keyring locked or label "${label}" not found!" 'Please unlock the keyring and try again' --icon=dialog-password -u critical && exit 1)
