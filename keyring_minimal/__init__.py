@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import gi
 
 gi.require_version('Secret', '1')
@@ -70,7 +71,7 @@ def main():
     import argparse
     p = argparse.ArgumentParser()
 
-    subp = p.add_subparsers(title='mode')
+    subp = p.add_subparsers(title='mode', required=True)
 
     testp = subp.add_parser('test')
     testp.set_defaults(func=test)
@@ -88,6 +89,9 @@ def main():
     setp.add_argument('--notes')
     setp.add_argument('--url')
 
-    args = p.parse_args()
+    if not len(sys.argv) > 1:
+        p.print_help()
+        sys.exit(1)
 
+    args = p.parse_args()
     args.func(args)
