@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keyring-minimal"
+version="0.1.1"
+description="A minimal libsecret keyring in python that works with keepassxc."
+authors=[{name="Hauke Rehfeld",email="pypi.org@haukerehfeld.de"}]
+
+[project.scripts]
+keyring-minimal = "keyring_minimal:main"
+
+[project.urls]
+Homepage="https://github.com/hrehfeld/python-keyring-minimal"
