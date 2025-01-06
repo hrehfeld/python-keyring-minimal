@@ -70,6 +70,7 @@ def set(args):
 def main():
     import argparse
     p = argparse.ArgumentParser()
+    p.set_defaults(func=None)
 
     subp = p.add_subparsers(title='mode', required=True)
 
@@ -94,4 +95,7 @@ def main():
         sys.exit(1)
 
     args = p.parse_args()
+    if not args.func:
+        p.print_help()
+        sys.exit(1)
     args.func(args)
